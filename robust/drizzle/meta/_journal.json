@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1762728331858,
+      "tag": "0000_wakeful_toad_men",
+      "breakpoints": true
+    }
+  ]
+}
