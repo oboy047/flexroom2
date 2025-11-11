@@ -1,8 +1,14 @@
-export default function Login() {
+export default function Register() {
   return (
     <section className="max-w-md mx-auto py-20 px-6">
-      <h1 className="text-3xl font-bold mb-6 text-center">Logg inn</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">Registrer deg</h1>
+
       <form className="space-y-4">
+        <input
+          type="text"
+          placeholder="Fullt navn"
+          className="border w-full p-2 rounded-lg"
+        />
         <input
           type="email"
           placeholder="E-post"
@@ -13,22 +19,27 @@ export default function Login() {
           placeholder="Passord"
           className="border w-full p-2 rounded-lg"
         />
+        <input
+          type="password"
+          placeholder="Bekreft passord"
+          className="border w-full p-2 rounded-lg"
+        />
+
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+          className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700"
         >
-          Logg inn
+          Opprett konto
         </button>
       </form>
 
-      
       <p className="text-center text-sm text-gray-600 mt-6">
-        Har du ikke en konto?{" "}
+        Har du allerede en konto?{" "}
         <a
-          href="/register"
+          href="/login"
           className="text-blue-600 font-medium hover:underline"
         >
-          Registrer deg
+          Logg inn
         </a>
       </p>
     </section>

@@ -4,6 +4,7 @@ import RoomList from "./rooms/RoomList";
 import Login from "./auth/Login";
 import { Admin } from "./admin/Admin";
 import { RoomDetail } from "./rooms/RoomDetail";
+import Register from "./Register";
 
 export const appRoutes = [
   route("/", Home),
@@ -11,4 +12,5 @@ export const appRoutes = [
   route("/rooms/:id", RoomDetail),
   route("/login", Login),
   route("/admin", Admin),
+  route("/register", Register),
 ];

@@ -12,7 +12,7 @@ export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) 
       <link rel="stylesheet" href={styles} />
     </head>
     <body className="bg-gray-50 text-gray-900 flex flex-col min-h-screen">
-      {/* 🌟 Header */}
+      
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <a href="/" className="text-xl font-bold text-blue-600 hover:text-blue-700">
@@ -27,13 +27,13 @@ export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) 
         </nav>
       </header>
 
-      {/* 💡 Sideinnhold */}
+      
       <main className="flex-grow">{children}</main>
 
-      {/* 🧭 Footer */}
+      
       <footer className="mt-10 border-t bg-white">
         <div className="mx-auto max-w-7xl px-6 py-4 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Flexroom — laget med ❤️ og Tailwind CSS
+          © {new Date().getFullYear()} Flexroom. Alle rettigheter reservert.
         </div>
       </footer>
 

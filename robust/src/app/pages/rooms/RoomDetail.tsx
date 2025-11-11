@@ -18,12 +18,12 @@ export function RoomDetail({ params }: RoomDetailProps) {
     return <p className="p-6 text-center text-gray-600">Rom ikke funnet.</p>;
   }
 
-  // 🎯 Dummy-adresse for kartet (du kan endre til noe ekte)
+ 
   const mapQuery = encodeURIComponent("Oslo, Norge");
 
   return (
     <section className="max-w-5xl mx-auto py-16 px-6">
-      {/* 🖼️ Bilde */}
+      
       <div className="room-card text-center" style={{ maxWidth: "900px", margin: "0 auto" }}>
         <img
           src={room.image}
@@ -44,7 +44,7 @@ export function RoomDetail({ params }: RoomDetailProps) {
             {room.available ? "Ledig" : "Opptatt"}
           </p>
 
-          {/* 🗓️ Bookingdato */}
+         
           <div style={{ margin: "1rem 0" }}>
             <label
               htmlFor="bookingDate"
@@ -62,7 +62,7 @@ export function RoomDetail({ params }: RoomDetailProps) {
             />
           </div>
 
-          {/* 🔘 Knapper */}
+          
           <div className="flex justify-between mt-4">
             <a
               href="/rooms"
@@ -88,7 +88,7 @@ export function RoomDetail({ params }: RoomDetailProps) {
         </div>
       </div>
 
-      {/* 🗺️ Google Maps */}
+      
       <div
         style={{
           marginTop: "3rem",
