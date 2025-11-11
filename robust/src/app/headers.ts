@@ -24,9 +24,18 @@ export const setCommonHeaders =
     );
 
     // Defines trusted sources for content loading and script execution:
-    response.headers.set(
-      "Content-Security-Policy",
-      `default-src 'self'; script-src 'self' 'unsafe-eval' 'nonce-${nonce}' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'self'; frame-src 'self' https://challenges.cloudflare.com https://www.google.com https://maps.google.com; object-src 'none';`
-    );
+  response.headers.set(
+  "Content-Security-Policy",
+  (
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-eval' 'nonce-" + nonce + "' https://challenges.cloudflare.com; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com; " +
+    "img-src 'self' https://images.unsplash.com; " +
+    "frame-src 'self' https://challenges.cloudflare.com; " +
+    "frame-ancestors 'self'; " +
+    "object-src 'none';"
+  )
+);
 
   };
