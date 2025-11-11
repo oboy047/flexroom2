@@ -1,52 +1,40 @@
-import room1 from "@/resources/room1.jpg";
-import room2 from "@/resources/room2.jpg";
-import room3 from "@/resources/room3.jpg";
-
+import { rooms } from "@/db/mockDB";
 
 export default function RoomList() {
-  const roomImages = [room1, room2, room3];
-
-  const rooms = Array.from({ length: 12 }).map((_, i) => ({
-    id: i + 1,
-    name: `Møterom ${i + 1}`,
-    capacity: 4 + (i % 6),
-    available: i % 3 !== 0,
-    image: roomImages[i % roomImages.length],
-    description:
-      i % 2 === 0
-        ? "Et lyst møterom med moderne utstyr og god plass til samarbeid."
-        : "Et stille og komfortabelt rom for fokusert arbeid og mindre møter.",
-  }));
-
   return (
-    <main className="container py-16">
-      <h1 className="text-4xl font-bold text-center mb-10 text-blue-700">
+    <main className="py-16 px-8 bg-gray-50 min-h-screen">
+      <h1 className="text-4xl font-bold text-center mb-12 text-blue-700">
         Våre møterom
       </h1>
 
+      {/* GRID-layout for romkort */}
       <div
-        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-        style={{ alignItems: "stretch" }}
+        className="room-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+          gap: "2rem",
+          alignItems: "stretch",
+          maxWidth: "1200px",
+          margin: "0 auto",
+        }}
       >
         {rooms.map((room) => (
           <div key={room.id} className="room-card">
-            <img
-              src={room.image}
-              alt={room.name}
-              className="room-image"
-              loading="lazy"
-            />
+            <img src={room.image} alt={room.name} className="room-image" />
 
             <div className="room-content">
               <h2 className="room-title">{room.name}</h2>
               <p className="room-description">{room.description}</p>
-              <p className="room-capacity">Kapasitet: {room.capacity} personer</p>
+              <p className="room-capacity">
+                Kapasitet: {room.capacity} personer
+              </p>
               <p
-                className={
-                  room.available ? "room-status available" : "room-status busy"
-                }
+                className={`room-status ${
+                  room.available ? "available" : "busy"
+                }`}
               >
-                {room.available ? "Ledig nå" : "Opptatt"}
+                {room.available ? "Ledig" : "Opptatt"}
               </p>
 
               <a href={`/rooms/${room.id}`} className="room-button">
