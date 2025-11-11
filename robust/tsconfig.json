@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+
+    
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
@@ -20,8 +22,9 @@
   "./types/vite.d.ts"
   ],
 
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     /* Enable importing .json files */
     "resolveJsonModule": true,

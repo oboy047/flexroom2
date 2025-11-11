@@ -1,15 +1,11 @@
-export default function RoomList() {
-  // 🖼️ Liste over fine møteromsbilder
-  const roomImages = [
-    "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1590608897129-79da98d1592a?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1560448075-bb485b067938?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1616627458704-7f3a1f0401dc?auto=format&fit=crop&w=800&q=80",
-  ];
+import room1 from "@/resources/room1.jpg";
+import room2 from "@/resources/room2.jpg";
+import room3 from "@/resources/room3.jpg";
 
-  // 💾 Mock data (du kan koble DB senere)
+
+export default function RoomList() {
+  const roomImages = [room1, room2, room3];
+
   const rooms = Array.from({ length: 12 }).map((_, i) => ({
     id: i + 1,
     name: `Møterom ${i + 1}`,
@@ -28,14 +24,12 @@ export default function RoomList() {
         Våre møterom
       </h1>
 
-      {/* 🧱 Grid layout */}
       <div
         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
         style={{ alignItems: "stretch" }}
       >
         {rooms.map((room) => (
           <div key={room.id} className="room-card">
-            {/* 📸 Bilde */}
             <img
               src={room.image}
               alt={room.name}
@@ -43,7 +37,6 @@ export default function RoomList() {
               loading="lazy"
             />
 
-            {/* 🧾 Info */}
             <div className="room-content">
               <h2 className="room-title">{room.name}</h2>
               <p className="room-description">{room.description}</p>
