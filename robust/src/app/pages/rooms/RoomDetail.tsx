@@ -72,15 +72,15 @@ export function RoomDetail({ params }: RoomDetailProps) {
           boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
         }}
       >
-        <iframe
-          title="Lokasjon"
-          src={`https://maps.google.com/maps?q=${mapQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-          width="100%"
-          height="400"
-          loading="lazy"
-          style={{ border: 0 }}
-          allowFullScreen
-        ></iframe>
+      <iframe
+        width="100%"
+        height="400"
+        style={{ border: 0 }}
+        loading="lazy"
+        allowFullScreen
+        referrerPolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9983.670396304258!2d10.73897075!3d59.91386825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416e61f04a06a3%3A0xf68e381dfd2c04d9!2sOslo!5e0!3m2!1sen!2sno!4v1700000000000"
+      />
       </div>
     </section>
   );
