@@ -1,94 +1,69 @@
 "use client";
 
-import React, { useState } from "react";
-import { getRoomById } from "@/db/mockDB";
-
+import React, { useEffect, useState } from "react";
+import { getRoomById } from "@/db/rooms";
 
 type RoomDetailProps = {
-  params: {
-    id: string;
-  };
+  params: { id: string };
 };
 
 export function RoomDetail({ params }: RoomDetailProps) {
-  const room = getRoomById(Number(params.id));
-  const [selectedDate, setSelectedDate] = useState<string>("");
+  const [room, setRoom] = useState<any | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedDate, setSelectedDate] = useState("");
+
+  useEffect(() => {
+    async function load() {
+      try {
+        const data = await getRoomById(params.id);
+        setRoom(data);
+      } finally {
+        setLoading(false);
+      }
+    }
+    load();
+  }, [params.id]);
+
+  if (loading) {
+    return <p className="p-6 text-center text-gray-600">Laster rom...</p>;
+  }
 
   if (!room) {
     return <p className="p-6 text-center text-gray-600">Rom ikke funnet.</p>;
   }
 
- 
   const mapQuery = encodeURIComponent("Oslo, Norge");
 
   return (
     <section className="max-w-5xl mx-auto py-16 px-6">
-      
-      <div className="room-card text-center" style={{ maxWidth: "900px", margin: "0 auto" }}>
-        <img
-          src={room.image}
-          alt={room.name}
-          className="room-image"
-          style={{ height: "500px", objectFit: "cover" }}
-        />
+      <div className="room-card text-center" style={{ maxWidth: 900, margin: "0 auto" }}>
+        {room.image && (
+          <img
+            src={room.image}
+            alt={room.name}
+            className="room-image"
+            style={{ height: 500, objectFit: "cover" }}
+          />
+        )}
 
         <div className="room-content">
           <h1 className="room-title">{room.name}</h1>
           <p className="room-description">{room.description}</p>
-          <p className="room-capacity">
-            Kapasitet: {room.capacity} personer
-          </p>
-          <p
-            className={`room-status ${room.available ? "available" : "busy"}`}
-          >
+          <p className="room-capacity">Kapasitet: {room.capacity} personer</p>
+          <p className={`room-status ${room.available ? "available" : "busy"}`}>
             {room.available ? "Ledig" : "Opptatt"}
           </p>
 
-         
-          <div style={{ margin: "1rem 0" }}>
-            <label
-              htmlFor="bookingDate"
-              style={{ display: "block", marginBottom: "0.5rem", fontWeight: "500" }}
-            >
-              Velg dato for booking:
-            </label>
-            <input
-              id="bookingDate"
-              type="date"
-              value={selectedDate}
-              onChange={(e) => setSelectedDate(e.target.value)}
-              className="border border-gray-300 rounded-lg p-2 text-sm"
-              style={{ minWidth: "200px" }}
-            />
-          </div>
-
-          
-          <div className="flex justify-between mt-4">
-            <a
-              href="/rooms"
-              className="room-button"
-              style={{ background: "#1e3a8a" }}
-            >
-              ← Tilbake
-            </a>
-
-            <button
-              disabled={!room.available || !selectedDate}
-              className={`room-button ${
-                !room.available || !selectedDate
-                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                  : ""
-              }`}
-            >
-              {selectedDate
-                ? `Book rom (${new Date(selectedDate).toLocaleDateString("no-NO")})`
-                : "Book rom"}
-            </button>
-          </div>
+          <a
+            href="/rooms"
+            className="room-button mt-4"
+            style={{ background: "#1e3a8a" }}
+          >
+            ← Tilbake
+          </a>
         </div>
       </div>
 
-      
       <div
         style={{
           marginTop: "3rem",
@@ -99,8 +74,7 @@ export function RoomDetail({ params }: RoomDetailProps) {
       >
         <iframe
           title="Lokasjon"
-          src="https://maps.google.com/maps?q=Oslo,Norge&t=&z=13&ie=UTF8&iwloc=&output=embed"
-
+          src={`https://maps.google.com/maps?q=${mapQuery}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
           width="100%"
           height="400"
           loading="lazy"

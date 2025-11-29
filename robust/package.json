@@ -23,9 +23,9 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.17",
+    "appwrite": "^21.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "drizzle-orm": "^0.44.7",
     "react": "19.3.0-canary-561ee24d-20251101",
     "react-dom": "19.3.0-canary-561ee24d-20251101",
     "react-server-dom-webpack": "19.3.0-canary-561ee24d-20251101",

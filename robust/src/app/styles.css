@@ -235,6 +235,119 @@ footer div {
   background: #1e40af;
 }
 
+/* ===========================
+   ROOM LIST LAYOUT
+   =========================== */
+
+.roomlist-section {
+  width: 100%;
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.roomlist-heading {
+  width: 100%;
+  max-width: 1200px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a; /* slate-900 */
+  margin-bottom: 1.5rem;
+}
+
+/* Her styrer vi radene med kort */
+.roomlist-grid {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;          /* gjør at kortene hopper til ny rad */
+  justify-content: center;  /* sentrer kortene */
+  gap: 1.5rem;              /* avstand mellom kortene */
+}
+
+/* ===========================
+   ROOM LIST CARD
+   =========================== */
+
+.roomlist-card {
+  background: white;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+
+  width: 320px;     /* FAST kortbredde – viktig for rad-layout */
+}
+
+.roomlist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Bilde */
+.roomlist-image-wrapper {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.roomlist-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.roomlist-card:hover .roomlist-image {
+  transform: scale(1.05);
+}
+
+/* Innhold */
+.roomlist-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.roomlist-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1e3a8a;
+  margin-bottom: 0.35rem;
+}
+
+.roomlist-description {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.roomlist-capacity {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 0.35rem;
+}
+
+.roomlist-status {
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.roomlist-status.available {
+  color: #059669;
+}
+
+.roomlist-status.busy {
+  color: #dc2626;
+}
+
+
+
 
 @media (max-width: 640px) {
   h1 { font-size: 1.75rem; }
