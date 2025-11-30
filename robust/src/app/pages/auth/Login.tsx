@@ -15,7 +15,7 @@ export default function Login() {
 
     try {
       await login(email, password);
-      window.location.href = "/"; // send bruker hjem eller til /admin
+      window.location.href = "/";
     } catch (err: any) {
       setError(err?.message || "Innlogging feilet.");
     }

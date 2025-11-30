@@ -1,6 +1,6 @@
-
-
-
+/* =======================================
+   GLOBAL STYLES (Body, tekst, font)
+   ======================================= */
 html, body {
   background-color: #f8fafc;
   color: #111827;
@@ -10,23 +10,18 @@ html, body {
   min-height: 100vh;
 }
 
-
 a {
   color: #2563eb;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
-a:hover {
-  color: #1e3a8a;
-}
-
+a:hover { color: #1e3a8a; }
 
 h1, h2, h3 {
   font-weight: 600;
   color: #111827;
   margin-bottom: 0.5rem;
 }
-
 
 p {
   color: #4b5563;
@@ -35,6 +30,9 @@ p {
 
 
 
+/* =======================================
+   HEADER & NAVIGATION KONTROLLERER TOPP-MENY
+   ======================================= */
 header {
   background-color: #ffffff;
   border-bottom: 1px solid #e5e7eb;
@@ -59,12 +57,13 @@ header nav a {
   color: #374151;
   margin-left: 1.5rem;
 }
-header nav a:hover {
-  color: #2563eb;
-}
+header nav a:hover { color: #2563eb; }
 
 
 
+/* =======================================
+   BUTTONS (Primær / Outline)
+   ======================================= */
 .btn {
   display: inline-block;
   padding: 0.6rem 1.25rem;
@@ -80,21 +79,20 @@ header nav a:hover {
   background-color: #2563eb;
   color: #ffffff;
 }
-.btn-primary:hover {
-  background-color: #1e3a8a;
-}
+.btn-primary:hover { background-color: #1e3a8a; }
 
 .btn-outline {
   background-color: transparent;
   border: 1px solid #d1d5db;
   color: #1f2937;
 }
-.btn-outline:hover {
-  background-color: #f3f4f6;
-}
+.btn-outline:hover { background-color: #f3f4f6; }
 
 
 
+/* =======================================
+   CARD-KOMPONENTER
+   ======================================= */
 .card {
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
@@ -103,12 +101,13 @@ header nav a:hover {
   padding: 1.5rem;
   transition: box-shadow 0.2s ease;
 }
-.card:hover {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
+.card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
 
 
+/* =======================================
+   FORM INPUTS
+   ======================================= */
 input, textarea {
   width: 100%;
   padding: 0.75rem;
@@ -124,6 +123,9 @@ input:focus, textarea:focus {
 
 
 
+/* =======================================
+   UTILITY CLASSES (alignment, colors)
+   ======================================= */
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .text-gray { color: #6b7280; }
@@ -143,6 +145,9 @@ input:focus, textarea:focus {
 
 
 
+/* =======================================
+   FOOTER
+   ======================================= */
 footer {
   border-top: 1px solid #e5e7eb;
   background-color: #ffffff;
@@ -157,6 +162,11 @@ footer div {
   font-size: 0.875rem;
 }
 
+
+
+/* =======================================
+   INDIVIDUELLE ROMKORT (Room Detail + Cards)
+   ======================================= */
 .room-card {
   background: #ffffff;
   border-radius: 1rem;
@@ -211,13 +221,8 @@ footer div {
   margin-bottom: 1rem;
 }
 
-.room-status.available {
-  color: #059669; /* grønn */
-}
-
-.room-status.busy {
-  color: #dc2626; /* rød */
-}
+.room-status.available { color: #059669; }
+.room-status.busy { color: #dc2626; }
 
 .room-button {
   display: inline-block;
@@ -230,15 +235,13 @@ footer div {
   text-decoration: none;
   transition: background 0.2s ease;
 }
+.room-button:hover { background: #1e40af; }
 
-.room-button:hover {
-  background: #1e40af;
-}
 
-/* ===========================
-   ROOM LIST LAYOUT
-   =========================== */
 
+/* =======================================
+   ROOMS LIST PAGE (Grid av rom)
+   ======================================= */
 .roomlist-section {
   width: 100%;
   padding: 2.5rem 1.5rem;
@@ -252,24 +255,24 @@ footer div {
   max-width: 1200px;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #0f172a; /* slate-900 */
+  color: #0f172a;
   margin-bottom: 1.5rem;
 }
 
-/* Her styrer vi radene med kort */
 .roomlist-grid {
   width: 100%;
   max-width: 1200px;
   display: flex;
-  flex-wrap: wrap;          /* gjør at kortene hopper til ny rad */
-  justify-content: center;  /* sentrer kortene */
-  gap: 1.5rem;              /* avstand mellom kortene */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
-/* ===========================
-   ROOM LIST CARD
-   =========================== */
 
+
+/* =======================================
+   ROOM LIST CARD (Brukes på /rooms)
+   ======================================= */
 .roomlist-card {
   background: white;
   border-radius: 0.75rem;
@@ -278,8 +281,7 @@ footer div {
   display: flex;
   flex-direction: column;
   transition: all 0.2s ease;
-
-  width: 320px;     /* FAST kortbredde – viktig for rad-layout */
+  width: 320px;
 }
 
 .roomlist-card:hover {
@@ -287,7 +289,6 @@ footer div {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Bilde */
 .roomlist-image-wrapper {
   width: 100%;
   height: 160px;
@@ -305,7 +306,6 @@ footer div {
   transform: scale(1.05);
 }
 
-/* Innhold */
 .roomlist-content {
   padding: 1rem;
   display: flex;
@@ -338,17 +338,14 @@ footer div {
   font-size: 0.85rem;
 }
 
-.roomlist-status.available {
-  color: #059669;
-}
-
-.roomlist-status.busy {
-  color: #dc2626;
-}
+.roomlist-status.available { color: #059669; }
+.roomlist-status.busy { color: #dc2626; }
 
 
 
-
+/* =======================================
+   RESPONSIVE DESIGN
+   ======================================= */
 @media (max-width: 640px) {
   h1 { font-size: 1.75rem; }
   .btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
