@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /* =======================================
    GLOBAL STYLES (Body, tekst, font)
    ======================================= */
@@ -341,8 +344,119 @@ footer div {
 .roomlist-status.available { color: #059669; }
 .roomlist-status.busy { color: #dc2626; }
 
+/* =======================================
+   ROOMS LIST PAGE / DROPDOWN MENU
+   ======================================= */
+.dropdown-wrapper-fullwidth {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2.5rem 1.5rem;
+  margin-bottom: 2rem;
+}
 
+.dropdown-button-fullwidth {
+  width: 100%;
+  max-width: 1200px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  transition: background 0.2s ease;
+  font-size: 1rem;
+}
 
+.dropdown-button-fullwidth:hover {
+  background-color: #1e40af;
+}
+
+.dropdown-menu-fullwidth {
+  width: 100%;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  margin-top: 0.5rem;
+  z-index: 10;
+}
+
+.dropdown-content-fullwidth {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dropdown-item-fullwidth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  vertical-align: bottom;
+  justify-content: center;
+}
+
+.dropdown-input-fullwidth {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.dropdown-input-fullwidth:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.dropdown-item-fullwidth .dropdown-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* custom checkbox look */
+.dropdown-item-fullwidth input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 6px;
+  background: #ffffff;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.15s ease;
+  flex: 0 0 20px;
+}
+
+.dropdown-item-fullwidth input[type="checkbox"]:checked {
+  background: #2563eb;
+  border-color: #2563eb;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><polyline points='20 6 9 17 4 12'/></svg>");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60% 60%;
+}
+
+.dropdown-item-fullwidth input[type="checkbox"]:focus {
+  outline: 3px solid rgba(37,99,235,0.12);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .dropdown-item-fullwidth input[type="checkbox"] { width: 24px; height: 24px; }
+}
 /* =======================================
    RESPONSIVE DESIGN
    ======================================= */
