@@ -3,7 +3,7 @@ import Home from "./Home";
 import RoomList from "./rooms/RoomList";
 import Login from "./auth/Login";
 import Admin from "./admin/Admin";
-import AdminPage from "./admin/AdminPage";
+import AdminPage from "./admin/adminPage";
 import RoomsPayment from "./rooms/RoomPayment";
 import { RoomDetail } from "./rooms/RoomDetail";
 import Register from "./Register";
