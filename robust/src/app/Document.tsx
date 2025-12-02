@@ -22,7 +22,6 @@ export const Document: React.FC<{ children: React.ReactNode }> = ({ children }) 
             <a href="/" className="hover:text-blue-600">Hjem</a>
             <a href="/rooms" className="hover:text-blue-600">Rom</a>
             <a href="/login" className="hover:text-blue-600">Logg inn</a>
-            <a href="/adminpage" className="hover:text-blue-600">Admin</a>
           </div>
         </nav>
       </header>
