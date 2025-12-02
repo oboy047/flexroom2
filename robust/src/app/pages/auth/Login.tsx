@@ -21,6 +21,7 @@ export default function Login() {
     }
   }
 
+
   return (
     <section className="max-w-md mx-auto py-20 px-6">
       <h1 className="text-3xl font-bold mb-6 text-center">Logg inn</h1>

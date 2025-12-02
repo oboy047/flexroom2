@@ -7,6 +7,7 @@ import AdminPage from "./admin/adminPage";
 import RoomsPayment from "./rooms/RoomPayment";
 import { RoomDetail } from "./rooms/RoomDetail";
 import Register from "./Register";
+import ContactPage from "./contact/ContactPage";
 
 export const appRoutes = [
   route("/", Home),
@@ -18,4 +19,5 @@ export const appRoutes = [
   route("/adminpage", AdminPage),
   route("/register", Register),
 
+  route("/contact", ContactPage),
 ];
