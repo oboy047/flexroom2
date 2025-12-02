@@ -39,11 +39,20 @@ export function RoomDetail({ params }: RoomDetailProps) {
       return;
     }
 
-    try {
-      await createBooking(room.$id, user.$id, selectedDate);
-      setMessage("Rommet ble booket!");
-      setSelectedDate("");
-    } catch (err) {
+      try {
+    setMessage("Behandler booking...");
+    
+    await createBooking(room.$id, user.$id, selectedDate);
+    
+    setMessage("Booking vellykket! Omdirigerer til betaling...");
+    
+    // Wait a moment so user sees the success message
+    setTimeout(() => {
+      window.location.href = `/rooms/${params.id}/payment`;
+    }, 1500);
+    
+  } 
+    catch (err) {
       console.error(err);
       setMessage("Kunne ikke utføre booking.");
     }
