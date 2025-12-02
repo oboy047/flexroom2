@@ -17,11 +17,36 @@ export default function RoomList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  {/* Filter States, for backend */}
+  {
+    /* Filter States, for backend */
+  }
   const [searchText, setSearchText] = useState("");
   const [selectedCapacity, setSelectedCapacity] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [roomAvailable, setRoomAvailable] = useState(false);
+
+  const extractLocation = (roomName: string): string => {
+    const locations = [
+      "Oslo",
+      "Bergen",
+      "Trondheim",
+      "Stavanger",
+      "Kristiansand",
+      "Tromsø",
+      "Bodø",
+      "Ålesund",
+      "Drammen",
+      "Frederikstad",
+      "Halden",
+    ];
+
+    for (const loc of locations) {
+      if (roomName.includes(loc)) {
+        return loc;
+      }
+    }
+    return "";
+  };
 
   useEffect(() => {
     async function load() {
@@ -36,6 +61,7 @@ export default function RoomList() {
           capacity: doc.capacity,
           image: doc.image ?? null,
           available: doc.available ?? true,
+          location: doc.location ?? "",
         }));
 
         setRooms(typed.filter((r) => r.name && r.capacity));
@@ -49,6 +75,37 @@ export default function RoomList() {
 
     load();
   }, []);
+
+  const filteredRooms = rooms.filter((room) => {
+    if (
+      searchText &&
+      !room.name.toLowerCase().includes(searchText.toLowerCase())
+    ) {
+      return false;
+    }
+
+    if (selectedCapacity) {
+      const capacity = parseInt(selectedCapacity);
+      if (capacity === 50) {
+        if (room.capacity < 50) return false;
+      } else {
+        if (room.capacity < capacity) return false;
+      }
+    }
+
+    if (selectedLocation) {
+      const roomLocation = extractLocation(room.name);
+      if (roomLocation !== selectedLocation) {
+        return false;
+      }
+    }
+
+    if (roomAvailable && !room.available) {
+      return false;
+    }
+
+    return true;
+  });
 
   if (loading) {
     return <p className="p-6 text-center text-gray-600">Laster rom...</p>;
@@ -76,14 +133,16 @@ export default function RoomList() {
   return (
     <section className="roomlist-section">
       <h1 className="roomlist-heading text-center">Rom</h1>
-      
+
       <div className="dropdown-wrapper-fullwidth">
-        <button 
+        <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className="dropdown-button-fullwidth"
         >
           🔍 Søk etter rom
-          <span className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>▼</span>
+          <span className={`dropdown-arrow ${isDropdownOpen ? "open" : ""}`}>
+            ▼
+          </span>
         </button>
 
         {isDropdownOpen && (
@@ -100,30 +159,30 @@ export default function RoomList() {
                 />
               </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                  <div className="dropdown-item-fullwidth">
-                    <label className="dropdown-label">Kapasitet:</label>
-                    <select 
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                <div className="dropdown-item-fullwidth">
+                  <label className="dropdown-label">Kapasitet:</label>
+                  <select
                     value={selectedCapacity}
                     onChange={(e) => setSelectedCapacity(e.target.value)}
                     className="dropdown-input-fullwidth"
-                    >
+                  >
                     <option value="">Velg kapasitet</option>
                     <option value="1">1 person</option>
                     <option value="5">5 personer</option>
                     <option value="10">10 personer</option>
                     <option value="20">20 personer</option>
                     <option value="50">50+ personer</option>
-                    </select>
-                  </div>
+                  </select>
+                </div>
 
-                  <div className="dropdown-item-fullwidth">
-                    <label className="dropdown-label">Område:</label>
-                    <select 
+                <div className="dropdown-item-fullwidth">
+                  <label className="dropdown-label">Område:</label>
+                  <select
                     value={selectedLocation}
                     onChange={(e) => setSelectedLocation(e.target.value)}
                     className="dropdown-input-fullwidth"
-                    >
+                  >
                     <option value="">Velg Område</option>
                     <option value="Oslo">Oslo</option>
                     <option value="Bergen">Bergen</option>
@@ -136,23 +195,24 @@ export default function RoomList() {
                     <option value="Drammen">Drammen</option>
                     <option value="Frederikstad">Frederikstad</option>
                     <option value="Halden">Halden</option>
-                    </select>
-                  </div>
-                    <div className="dropdown-item-fullwidth">
-                      <label> </label>{/* For Mellomrom */}
-                      <label className="dropdown-label">
-                        <input
-                          type="checkbox"
-                          checked={roomAvailable}
-                          onChange={() => setRoomAvailable(!roomAvailable)}
-                          className="mr-2"
-                        />
-                        Vis kun ledige rom
-                      </label>
-                      </div>
+                  </select>
                 </div>
+                <div className="dropdown-item-fullwidth">
+                  <label> </label>
+                  {/* For Mellomrom */}
+                  <label className="dropdown-label">
+                    <input
+                      type="checkbox"
+                      checked={roomAvailable}
+                      onChange={() => setRoomAvailable(!roomAvailable)}
+                      className="mr-2"
+                    />
+                    Vis kun ledige rom
+                  </label>
+                </div>
+              </div>
 
-              <button 
+              <button
                 onClick={() => setIsDropdownOpen(false)}
                 className="btn btn-primary mt-4"
               >
@@ -162,9 +222,13 @@ export default function RoomList() {
           </div>
         )}
       </div>
-      
+
+      <p className="text-center text-gray-600 my-4">
+        Viser {filteredRooms.length} av {rooms.length} rom
+      </p>
+
       <div className="roomlist-grid">
-        {rooms.map((room) => (
+        {filteredRooms.map((room) => (
           <a
             key={room.$id}
             href={`/rooms/${room.$id}`}
@@ -187,6 +251,12 @@ export default function RoomList() {
               <p className="roomlist-capacity">
                 Kapasitet: {room.capacity} personer
               </p>
+
+              {extractLocation(room.name) && (
+                <p className="text-sm text-gray-600">
+                  📍 {extractLocation(room.name)}
+                </p>
+              )}
 
               <p
                 className={`roomlist-status ${
