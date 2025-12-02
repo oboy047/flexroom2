@@ -19,9 +19,11 @@ export default function Home() {
           </a>
         </div>
       </section>
-
+      
+      <div className="h-8" />{/* For Mellomrom */}
       
       <section className="container py-24 text-center">
+
         <h2 className="text-3xl font-semibold mb-4">Hvordan fungerer Flexroom?</h2>
         <p className="text-gray mb-12 max-w-2xl mx-auto">
           Finn ledige rom, reserver på nett, og få full oversikt over dine bookinger. 
@@ -84,7 +86,7 @@ export default function Home() {
       </section>
 
       
-      <section className="text-center py-24 bg-white shadow-soft rounded-lg mt-10 mx-auto max-w-5xl">
+      <section className="text-center py-6 bg-white shadow-soft rounded-lg mt-10 mx-auto max-w-5xl">
         <h2 className="text-3xl font-semibold mb-4 text-blue-700">Klar til å komme i gang?</h2>
         <p className="text-gray mb-8">
           Bli en del av fremtidens møteopplevelse – helt gratis.
