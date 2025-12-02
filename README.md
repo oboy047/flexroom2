@@ -24,3 +24,10 @@ pnpm install
 
 3.
 pnpm dev
+
+
+
+Testing på admin siden:
+
+mail: admin2@mail.com
+passord: Test1234
