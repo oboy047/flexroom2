@@ -66,7 +66,7 @@ export default function Admin() {
 
   return (
     <section className="max-w-4xl mx-auto py-16 px-6">
-      <h1 className="text-3xl font-bold mb-10">Admin-panel</h1>
+      <h1 className="text-3xl font-bold mb-10">Lag Annonse</h1>
 
       {/* Legg til rom */}
       <div className="mb-12 p-6 border rounded-lg">

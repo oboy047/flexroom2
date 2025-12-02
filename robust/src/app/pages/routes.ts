@@ -16,7 +16,7 @@ export const appRoutes = [
   route("/rooms/:id", RoomDetail),
   route("/login", Login),
   route("/admin", Admin),
-  route("/adminpage", AdminPage),
+  route("/adminPage", AdminPage),
   route("/register", Register),
 
   route("/contact", ContactPage),
